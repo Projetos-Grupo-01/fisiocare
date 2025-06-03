@@ -1,6 +1,7 @@
 package com.generation.fisiocare.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,13 @@ public class UsuarioController {
 			.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
 			.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 
+	}
+	
+	@GetMapping("/imc/{id}")
+	public ResponseEntity<Map<String, Object>> calcularImc(@PathVariable Long id) {
+	    return usuarioRepository.findById(id)
+	        .map(usuario -> ResponseEntity.ok(usuarioService.calcularImc(usuario)))
+	        .orElse(ResponseEntity.notFound().build());
 	}
 
 	@PutMapping("/atualizar")
