@@ -1,4 +1,4 @@
-package com.generation.blogPessoal;
+package com.generation.fisiocare;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
