@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.generation.fisiocare.model.Usuario;
+
 public class UserDetailsImpl implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -14,11 +16,10 @@ public class UserDetailsImpl implements UserDetails {
 	private String password;
 	private List<GrantedAuthority> authorities;
 
-	/* TODO: precisa da entidade Usuario
-	 * public UserDetailsImpl(Usuario user) {
+	public UserDetailsImpl(Usuario user) {
 		this.username = user.getUsuario();
 		this.password = user.getSenha();
-	}*/
+	}
 
 	public UserDetailsImpl() {	}
 
