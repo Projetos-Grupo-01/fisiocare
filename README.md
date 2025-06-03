@@ -94,7 +94,7 @@ exercicio : List<Exercicio>
 class Exercicio {
   
 id : Long
-nome : float,
+nome : String,
 numeroSeries : int,
 repeticoes : int,
 intervalo : String,
