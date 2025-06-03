@@ -1,5 +1,7 @@
 package com.generation.fisiocare.service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,34 @@ public class UsuarioService {
 
 		return Optional.of(usuarioRepository.save(usuario));
 
+	}
+	
+	public Map<String, Object> calcularImc(Usuario usuario) {
+	    double peso = usuario.getPeso();
+	    double altura = usuario.getAltura();
+
+	    if (altura <= 0) {
+	        throw new IllegalArgumentException("Altura deve ser maior que zero.");
+	    }
+
+	    double imc = peso / (altura * altura);
+	    double imcArredondado = Math.round(imc * 10.0) / 10.0;
+	    String classificacao;
+
+	    if (imc < 18.5) {
+	        classificacao = "Abaixo do peso";
+	    } else if (imc < 24.9) {
+	        classificacao = "Peso normal";
+	    } else if (imc < 29.9) {
+	        classificacao = "Sobrepeso";
+	    } else {
+	        classificacao = "Obesidade";
+	    }
+
+	    Map<String, Object> resposta = new HashMap<>();
+	    resposta.put("imc", imcArredondado);
+	    resposta.put("classificacao", classificacao);
+	    return resposta;
 	}
 
 	public Optional<Usuario> atualizarUsuario(Usuario usuario) {
