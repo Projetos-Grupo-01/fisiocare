@@ -10,13 +10,14 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.generation.fisiocare.model.Usuario;
+import com.generation.fisiocare.repository.UsuarioRepository;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	
-	/* TODO: precisa da classe UsuarioRepository
-	 * @Autowired
-	 * private UsuarioRepository usuarioRepository;
-	*/
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
