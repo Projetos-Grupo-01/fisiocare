@@ -10,13 +10,25 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.generation.fisiocare.model.Usuario;
+import com.generation.fisiocare.repository.UsuarioRepository;
+
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+
+		Optional<Usuario> usuario = usuarioRepository.findByUsuario(username);
+
+		if (usuario.isPresent())
+			return new UserDetailsImpl(usuario.get());
+		else
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Erro ao Autenticar o Usuário");
+			
 	}
-	
 }
