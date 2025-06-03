@@ -1,10 +1,13 @@
 package com.generation.fisiocare.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -49,6 +52,10 @@ public class Exercicio {
     @Size(max = 5000, message = "A mídia deve ter no máximo 5000 caracteres.")
     @Column(length = 5000)
     private String midia;
+    
+    @ManyToOne
+	@JsonIgnoreProperties("exercicio")
+	private Categoria categoria;
 
 	public Long getId() {
 		return id;
