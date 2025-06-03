@@ -1,4 +1,4 @@
-package com.generation.blogPessoal;
+package com.generation.fisiocare;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
