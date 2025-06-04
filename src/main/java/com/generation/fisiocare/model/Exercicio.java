@@ -52,8 +52,8 @@ public class Exercicio {
     @Size(max = 5000, message = "A mídia deve ter no máximo 5000 caracteres.")
     @Column(length = 5000)
     private String midia;
-    
-    @ManyToOne
+
+	@ManyToOne
 	@JsonIgnoreProperties("exercicio")
 	private Categoria categoria;
 
@@ -120,4 +120,12 @@ public class Exercicio {
 	public void setMidia(String midia) {
 		this.midia = midia;
 	}	
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 }
